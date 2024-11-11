@@ -20,3 +20,8 @@ Web application for users to invest in a fund and get dividends in return, as a 
 
 - Default users can login, register, invest, withdraw (an) investment(s), see investments and dividends
 - Owner (Admin) can login and distrubite dividends
+
+## Testing
+
+- Integration tests for Auth related views
+- `cd backend/` -> `python manage.py test investment_fund.auth_tests`
