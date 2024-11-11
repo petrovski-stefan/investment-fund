@@ -18,13 +18,21 @@ export const ProtectedRoute = ({ children, isSuperuser }: ProtectedRouteProps) =
     if (isSuperuser !== undefined && authData.isSuperuser !== isSuperuser) {
       navigate('/');
     }
-  }, [authData.username, authData.token, authData.isSuperuser]);
+
+    if (authData.isSuperuser && isSuperuser === undefined) {
+      navigate('/distribute-dividends');
+    }
+  }, [authData.username, authData.token, authData.isSuperuser, isSuperuser]);
 
   if (authData.username === '' || authData.token === '') {
     return null;
   }
 
   if (isSuperuser !== undefined && authData.isSuperuser !== isSuperuser) {
+    return null;
+  }
+
+  if (authData.isSuperuser && isSuperuser === undefined) {
     return null;
   }
 
