@@ -128,7 +128,7 @@ class DividendsView(APIView):
             return Response(status=status.HTTP_401_UNAUTHORIZED)
 
         if not user_instance.is_superuser:  # type: ignore
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+            return Response(status=status.HTTP_403_FORBIDDEN)
 
         all_users = User.objects.filter(is_superuser=False).annotate(
             total_invested=Sum("investments__amount")
@@ -137,6 +137,10 @@ class DividendsView(APIView):
         DIVIDEND_PERCENT = 0.1  # Fixed percentage for dividend calculation
 
         for user in all_users:
+            if user.total_invested is None:  # type: ignore
+                # User has 0 investments
+                continue
+
             Dividend.objects.create(
                 user=user,
                 amount=user.total_invested * DIVIDEND_PERCENT,  # type: ignore

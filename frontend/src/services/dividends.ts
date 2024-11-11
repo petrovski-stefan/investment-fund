@@ -12,9 +12,13 @@ export const getAllDividends = async (token: string) => {
 };
 
 export const distrubiteDividends = async (token: string) => {
-  const res = await axiosInstance.post(ALL_DIVIDENDS_URL, {
-    headers: { Authorization: `Token ${token}` },
-  });
+  const res = await axiosInstance.post(
+    ALL_DIVIDENDS_URL,
+    {},
+    {
+      headers: { Authorization: `Token ${token}` },
+    }
+  );
 
   return res;
 };
