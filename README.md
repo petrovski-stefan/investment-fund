@@ -7,7 +7,7 @@ Web application for users to invest in a fund and get dividends in return, as a 
 ## Docker setup (Recommended):
 
 - Start both services (frontend and backend) (run `docker-compose up -d`)
-- Create a supersuper (run `docker exec -it <backend_container_id> python manage.py createsuperuser`, you can use `docker ps | grep 'infinitcode_technical_interview_task-backend'` to get the id )
+- Create a supersuper (run `docker exec -it <backend_container_id> python manage.py createsuperuser`, you can use `docker ps | grep 'investment-fund-backend'` to get the id )
 - Frontend runs on port 5173, backend on port 8000 (both locally)
 
 ## Manual setup:
